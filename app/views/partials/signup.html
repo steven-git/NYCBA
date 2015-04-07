@@ -1,0 +1,181 @@
+<div ng-hide="confirmation" class="signup text-left">
+	<div class="col-md-12 margin-bottom extra-padding">
+		<div class="row-form">
+			<span class="label"><b>Team Name</b></span>
+			<input id="team" type="text" ng-model="newTeam.name">
+		</div>
+	</div>
+
+	<!-- <div class="clearfix"></div> -->
+
+	<div class="col-md-12">
+
+		<div class="col-md-6 margin-bottom">
+			<span class="label"><b>Team Captain</b></span>
+			<div class="row-form">
+				<span class="label">First Name:</span>
+				<input type="text" ng-model="newTeam.captain.name.first">
+			</div>
+			<div class="row-form">
+				<span class="label">Last Name:</span>
+				<input type="text" ng-model="newTeam.captain.name.last">
+			</div>
+			<div class="row-form">
+				<span class="label">Cell Phone:</span>
+				<input type="tel" ng-model="newTeam.captain.cell">
+			</div>
+			<div class="row-form">
+				<span class="label">Email:</span>
+				<input type="email" ng-model="newTeam.captain.email">
+			</div>
+			<div class="row-form">
+				<span class="label">Confirm Email:</span>
+				<input type="text" ng-model="newTeam.captain.emailConfirm">
+			</div>
+		</div>
+		
+		<div class="col-md-6 margin-bottom">
+			<span class="label"><b>Co-Captain</b></span>
+			<div class="row-form">
+				<span class="label">First Name:</span>
+				<input type="text" ng-model="newTeam.coCaptain.name.first">
+			</div>
+			<div class="row-form">
+				<span class="label">Last Name:</span>
+				<input type="text" ng-model="newTeam.coCaptain.name.last">
+			</div>
+			<div class="row-form">
+				<span class="label">Cell Phone:</span>
+				<input type="tel" ng-model="newTeam.coCaptain.cell">
+			</div>
+			<div class="row-form">
+				<span class="label">Email:</span>
+				<input type="email" ng-model="newTeam.coCaptain.email">
+			</div>
+			<div class="row-form">
+				<span class="label">Confirm Email:</span>
+				<input type="text" ng-model="newTeam.coCaptain.emailConfirm">
+			</div>
+		</div>
+
+	</div>
+	
+	<div class="col-md-12">
+
+		<div class="col-md-6 margin-bottom">
+			<span class="label"><b>Players:</b></span>
+			<div ng-repeat="player in players">
+				<div class="row-form">
+					<span class="label">Player {{$index + 3}}</span>
+					<input type="text" ng-model="player.name">
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-md-6 margin-bottom">
+			<div class="terms-box">
+				<span class="terms">TERMS:</span><br>
+				<h4>The Fall season will begin the week of <span class="orange">Sept 8th, 2014</span>. It will consist of 8 Regular Season Games and Playoffs for the top 4 teams in each division and Inter-Divisional Playoffs for the winners of each division. The entry fee is $1,250 per team and includes 10 jerseys &amp; all Court and Referee Fees. Entering a team online with this form requires a $10.00 credit card deposit by you that shall constitute your signature as the person entering the team. Your deposit will be applied towards your team fee.</h4>
+			</div>
+			<h2 class="text-center"><strong>Any questions, please contact league creator Steven at 347-479-4998 or email nycba.league@gmail.com</strong></h2>
+		</div>
+
+	</div>
+
+	<div class="col-md-12">
+		<div class="col-md-12">
+			<span class="label"><b>Checkout:</b></span>
+			<span class="label">Credit Card Information:</span>
+		</div>
+		<div class="col-md-6 margin-bottom">
+			<div class="row-form">
+				<div class="col-md-6 no-padding">
+					<span class="label">First Name:</span>
+					<input type="text" ng-model="newTeam.cc.name.first">
+				</div>
+				<div class="col-md-6 no-padding-small">
+					<span class="label">Last Name:</span>
+					<input type="text" ng-model="newTeam.cc.name.last">
+				</div>
+			</div>
+			<div class="row-form">
+				<span class="label">Billing address:</span>
+				<input type="text" ng-model="newTeam.cc.address1">
+				<input type="text" ng-model="newTeam.cc.address2">
+			</div>
+			<div class="row-form">
+				<div class="col-md-8 no-padding">
+					<span class="label">City:</span>
+					<input type="text" ng-model="newTeam.cc.city">
+				</div>
+				<div class="col-md-4 no-padding-small">
+					<span class="label">State:</span>
+					<select ng-options="state for state in states" ng-model="newTeam.cc.state"></select><br>
+				</div>
+			</div>
+			<div class="row-form">
+				<div class="col-md-4 no-padding">
+					<span class="label">Zip:</span>
+					<input type="text" ng-model="newTeam.cc.zip">
+				</div>
+				<div class="col-md-8 no-padding-small">
+					<span class="label">Phone:</span>
+					<input type="text" ng-model="newTeam.cc.phone">
+				</div>
+			</div>
+			<div class="row-form">
+				<span class="label">Email:</span>
+				<input type="text" ng-model="newTeam.cc.email">
+				<span class="text-muted"><small>your confirmation email will be sent to this address</small></span><br>
+			</div>
+		</div>
+
+		<div class="col-md-6 margin-bottom">
+			<div class="row-form">
+				<span class="label">Name on the card:</span>
+				<input type="text" ng-model="newTeam.cc.nameOnCard">
+			</div>
+			<div class="row-form">
+				<span class="label">Card Type:</span>
+				<select ng-model="newTeam.cc.cardType" ng-options="type for type in ccTypes"></select><br>
+			</div>
+			<div class="row-form">
+				<span class="label">Card Number:</span>
+				<input type="text" ng-model="newTeam.cc.number">
+			</div>
+			<div class="row-form">
+				<span class="label">Expiration:</span>
+				<select ng-model="newTeam.cc.expiration.month" ng-options="month for month in expirationMonth"></select> / <select ng-model="newTeam.cc.expiration.year" ng-options="year for year in expirationYear"></select>
+			</div>
+			<div class="row-form">
+				<span class="label">Card Security Code:</span>
+				<input type="text" ng-model="newTeam.cc.security">
+			</div>
+			<div class="row-form">
+				<span class="label">Waiver:</span>
+				<textarea rows="5" cols="50" class="waiver" disabled>You represent and warrant to NYCBA LLC its agents and employees that you have full legal authority to complete this online registration form or request, including full authority to make use of the credit or debit card to which registration fees will be charged. In addition, if you are registering third parties, you represent and warrant that you have been duly authorized to act as agent on behalf of such parties in submitting this online registration request.
+
+Acknowledging that participation in athletics carries with it a risk of physical injury, I agree that NYCBA LLC its agents and employees shall not be liable to me or my child for any injury or damage, howsoever caused, resulting directly or indirectly from my or my child's participation in NYCBA leagues at any time preceding, during or after my or my child's participation, and I hereby discharge NYCBA its agents and employees from all actions, claims, and demands I or my child may have for any such injury or damage.
+
+I authorize that NYCBA LLC and its licensees have the right to use all photographs or videos taken of me or my child while participating in NYCBA programming for advertising or promotional material.</textarea>
+			</div>
+			<div class="row-form margin-bottom">
+				<input type="checkbox" ng-model="agreed"> I agree
+			</div>
+			<div class="row-form">
+				<button type="submit" id="btnSignUp" ng-click="addTeam()" class="btn btn-danger">Submit</button>
+			</div>
+		</div>
+		
+	</div>
+
+	<br>
+	<br>
+
+	
+</div>
+
+
+<div ng-show="confirmation">
+	<h3>Thank you for signing up! Please, check your email for confirmation</h3>
+</div>

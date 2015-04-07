@@ -1,0 +1,28 @@
+<h1 class="text-center">{{division.name}}</h1>
+<h4 class="text-center">{{division.name}} STANDINGS</h4>
+<hr>
+
+<table width="100%">
+  <thead>
+	<tr>
+	  <th width="25%"><h3>Team</h3></th>
+	  <th width="15%" class="center"><h4>W</h4></th> 
+	  <th width="15%" class="center"><h4>L</h4></th>
+	  <th width="15%" class="center"><h4>PCT</h4></th>
+	  <th width="15%" class="center"><h4>GB</h4></th>
+	  <th width="15%" class="center"><h4>STREAK</h4></th>
+	</tr>
+  </thead>
+  <tbody>
+	<tr ng-repeat="team in teams | orderBy:'-pct'" ng-class="{'alternate-row': $index % 2 == 1, 'regular-row': $index % 2 == 0}">
+	  <td align="left"><a class="dark-link" ng-href="/team/{{team.teamId}}"><strong>{{team.name}}</strong></a></td>
+	  <td align="center">{{team.wins}}</td> 
+	  <td align="center">{{team.losses}}</td>
+	  <td align="center">{{team.pct}}</td>
+	  <td align="center">{{team.gb}}</td> 
+	  <td align="center">{{team.streakLetter}}{{team.streakNumber}}</td>
+	</tr>
+  </tbody>
+</table>
+<br>
+<br>

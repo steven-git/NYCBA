@@ -1,0 +1,29 @@
+<h1 class="text-center">{{division.name}}</h1>
+<h4 class="text-center">{{division.name}} STATISTICS</h4>
+<hr>
+
+<table width="100%">
+  <thead>
+	<tr>
+	  <th width="30%"><h3>Player</h3></th>
+	  <th width="14%" class="center" ng-click="changeOrder('-ppg')"><span class="pointer"><span class="caret" ng-show="order == '-ppg'"></span><br>PPG</span></th> 
+	  <th width="14%" class="center" ng-click="changeOrder('-apg')"><span class="pointer"><span class="caret" ng-show="order == '-apg'"></span><br>APG</span></th>
+	  <th width="14%" class="center" ng-click="changeOrder('-rpg')"><span class="pointer"><span class="caret" ng-show="order == '-rpg'"></span><br>RPG</span></th>
+	  <th width="14%" class="center" ng-click="changeOrder('-spg')"><span class="pointer"><span class="caret" ng-show="order == '-spg'"></span><br>SPG</span></th>
+	  <th width="14%" class="center" ng-click="changeOrder('-bpg')"><span class="pointer"><span class="caret" ng-show="order == '-bpg'"></span><br>BPG</span></th>
+	</tr>
+  </thead>
+  <tbody>
+	<tr ng-repeat="player in players | orderBy:order" ng-class="{'alternate-row': $index % 2 == 1, 'regular-row': $index % 2 == 0}">
+	  <td align="left"><a class="dark-link" ng-href="/player/{{player.playerId}}"><strong>{{$index + 1}}) {{player.firstName}} {{player.lastName}}</strong></a></td>
+	  <td align="center">{{player.ppg}}</td> 
+	  <td align="center">{{player.apg}}</td>
+	  <td align="center">{{player.rpg}}</td>
+	  <td align="center">{{player.spg}}</td> 
+	  <td align="center">{{player.bpg}}</td>
+	</tr>
+  </tbody>
+</table>
+
+<br>
+<br>

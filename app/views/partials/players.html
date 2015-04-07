@@ -1,0 +1,13 @@
+<div class="col-md-12" ng-repeat="letter in (players | firstLetter) | orderBy: 'toString()'">
+
+	<div class="alphabetic"><h3>{{letter}}</h3></div>
+	
+	<div class="alphabetic-list">
+		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" ng-repeat="player in players | alphabetic:letter | orderBy: 'name.last'">
+		  <a ng-href="/player/{{player._id}}">{{player.name.last}}, {{player.name.first}}</a>
+		</div>
+	</div>
+
+</div>
+
+

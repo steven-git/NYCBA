@@ -1,0 +1,145 @@
+<h1 class="text-center">{{division.name}}</h1>
+<h4 class="text-center">{{division.name}} STANDINGS</h4>
+<hr>
+
+<table width="100%">
+  <thead>
+	<tr>
+	  <th width="30%"><h3>Team</h3></th>
+	  <th width="14%" class="center"><h4>W</h4></th> 
+	  <th width="14%" class="center"><h4>L</h4></th>
+	  <th width="14%" class="center"><h4>PCT</h4></th>
+	  <th width="14%" class="center"><h4>GB</h4></th>
+	  <th width="14%" class="center"><h4>STREAK</h4></th>
+	</tr>
+  </thead>
+  <tbody>
+	<tr ng-repeat="team in teams | orderBy:'-pct'" ng-class="{'alternate-row': $index % 2 == 1, 'regular-row': $index % 2 == 0}">
+	  <td align="left"><a class="dark-link" ng-href="/team/{{team.teamId}}"><strong>{{team.name}}</strong></a></td>
+	  <td align="center">{{team.wins}}</td> 
+	  <td align="center">{{team.losses}}</td>
+	  <td align="center">{{team.pct}}</td>
+	  <td align="center">{{team.gb}}</td> 
+	  <td align="center">{{team.streakLetter}}{{team.streakNumber}}</td>
+	</tr>
+  </tbody>
+</table>
+<br>
+<br>
+
+<h4 class="text-center">{{division.name}} LEADERS</h4>
+<hr>
+
+<table width="100%">
+  <thead>
+	<tr>
+	  <th width="30%"><h3>Player</h3></th>
+	  <th width="14%" class="center" ng-click="changeOrder('-ppg')"><span class="pointer"><span class="caret" ng-show="order == '-ppg'"></span><br>PPG</span></th> 
+	  <th width="14%" class="center" ng-click="changeOrder('-apg')"><span class="pointer"><span class="caret" ng-show="order == '-apg'"></span><br>APG</span></th>
+	  <th width="14%" class="center" ng-click="changeOrder('-rpg')"><span class="pointer"><span class="caret" ng-show="order == '-rpg'"></span><br>RPG</span></th>
+	  <th width="14%" class="center" ng-click="changeOrder('-spg')"><span class="pointer"><span class="caret" ng-show="order == '-spg'"></span><br>SPG</span></th>
+	  <th width="14%" class="center" ng-click="changeOrder('-bpg')"><span class="pointer"><span class="caret" ng-show="order == '-bpg'"></span><br>BPG</span></th>
+	</tr>
+  </thead>
+  <tbody>
+	<tr ng-repeat="player in players | orderBy:order | limitTo:10" ng-class="{'alternate-row': $index % 2 == 1, 'regular-row': $index % 2 == 0}">
+	  <td align="left">
+	  	<a class="dark-link" ng-href="/player/{{player.playerId}}">
+	  		<strong>
+	  			<img class="top-thumbnail" src="https://s3.amazonaws.com/nycba/{{player.photoUrl}}">
+	  			{{$index + 1}}) {{player.firstName}} {{player.lastName}}
+	  		</strong>
+	  	</a>
+	  </td>
+	  <td align="center">{{player.ppg}}</td> 
+	  <td align="center">{{player.apg}}</td>
+	  <td align="center">{{player.rpg}}</td>
+	  <td align="center">{{player.spg}}</td> 
+	  <td align="center">{{player.bpg}}</td>
+	</tr>
+  </tbody>
+</table>
+<br>
+<br>
+
+<h4 class="text-center">Last Week's Scores:</h4>
+<hr>
+
+<div class="col-md-offset-1 col-md-10 col-sm-12 col-xs-12 alternate-row last-week">
+	<div class="col-md-12" ng-repeat="game in lastWeekGames | orderBy: 'timeSlot'">
+		<span class="col-xs-12 col-sm-4 pull-left text-left" ng-class="{orange: game.team1Scores.hasWon}"><strong>{{game.team1Scores.name}}</strong></span>
+		<span ng-hide="game.team1Scores.points === 0">
+			<span class="col-xs-5 col-sm-1 pull-left text-left" ng-class="{'orange strong': game.team1Scores.hasWon}">{{game.team1Scores.points}}</span>
+			<span class="col-xs-2 col-sm-2 pull-left">-</span>
+			<span class="col-xs-5 col-sm-1 pull-left text-right" ng-class="{orange: game.team2Scores.hasWon}">{{game.team2Scores.points}}</span>
+		</span>
+		<span ng-show="game.team1Scores.points === 0 && game.team1Scores.hasWon === false">
+			<span class="col-xs-5 col-sm-1 pull-left text-left">0</span>
+			<span class="col-xs-2 col-sm-2 pull-left">-</span>
+			<span class="col-xs-5 col-sm-1 pull-left text-right orange strong">1</span>
+		</span>
+		<span ng-show="game.team1Scores.points === 0 && game.team1Scores.hasWon === true">
+			<span class="col-xs-5 col-sm-1 pull-left text-left orange strong">1</span>
+			<span class="col-xs-2 col-sm-2 pull-left">-</span>
+			<span class="col-xs-5 col-sm-1 pull-left text-right">0</span>
+		</span>
+		<span class="col-xs-12 col-sm-4 pull-left text-right" ng-class="{orange: game.team2Scores.hasWon}"><strong>{{game.team2Scores.name}}</strong></span><br>
+	</div>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="padding-top-2">
+	<h4 class="text-center">Upcoming games:</h4>
+	<hr>
+</div>
+
+
+<div class="col-xs-12">
+  <div ng-hide="noUpcomingGames">
+    <div class="col-lg-6 col-md-12 no-padding-sm" ng-repeat="weeks in (upcomingWeeksGames | unique) | orderBy:'weekNumber' ">
+      <div class="upcoming-games">
+	      <div class="upcoming-game-pill">
+	        
+	        <div class="col-lg-6 col-xs-6 text-center">
+	          <div class="upcoming-game-calendar-pill">
+		          <div class="upcoming-calendar-pill-header white">WEEK</div>
+		          <h2>{{weeks.weekNumber + 1}}</h2>
+		          <div class="date">{{weeks.date | date:'MM/dd/yy'}}</div>
+	      	  </div>
+	        </div>
+
+	        <div class="col-lg-6 col-xs-6 pull-right upcoming-game-schedule">
+
+		        <div ng-repeat="game in upcomingWeeksGames | byWeek:weeks.weekNumber | orderBy:'timeSlot' ">
+
+			        <div class="col-md-12 text-center upcoming-game-text">
+			          <strong>{{game.team1.name}}</strong><br>
+			          vs.<br>
+			          <strong>{{game.team2.name}}</strong><br>
+			          
+			          <span class="red margin-top-05">
+			            <span class="fa fa-clock-o"></span> <strong>{{game.timeSlot}}</strong>
+			            <br>
+			          </span>
+		          
+		        	</div>
+
+		        	<div class="col-md-12"><hr ng-hide="$last"></div>
+
+		        	
+		        </div>
+
+	    	</div>
+
+	      </div>
+
+	    </div>
+	</div>
+  </div>
+
+  <div ng-show="noUpcomingGames" class="padding-left-2">
+    <h4><strong>There are no upcoming games for this division</strong></h4>
+  </div>
+
+</div>

@@ -1,0 +1,192 @@
+<div class="col-md-12">
+
+  <div class="col-lg-6 col-lg-offset-4 col-md-8 col-sm-6 player-name-header">
+    <b>Name:</b> {{player.name.first}} {{player.name.last}}
+  </div>
+
+  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 player-left-column">
+    <img class="player-image main" ng-src="https://s3.amazonaws.com/nycba/{{player.photoUrl}}" ng-show="player.photoUrl">
+    <img class="player-image main" src="./images/players/no_image.png" ng-hide="player.photoUrl">
+    
+    <div ng-show="isCurrentlyPlaying">
+      <h3 class="strong no-padding">Statistics:</h3><br>
+      <ul class="list-unstyled player-stats">
+      <li><b>PPG:</b> {{team.ppg}}</li>
+      <hr>
+      <li><b>RPG:</b> {{team.rpg}}</li>
+      <hr>
+      <li><b>APG:</b> {{team.apg}}</li>
+      <hr>
+      <li><b>SPG:</b> {{team.spg}}</li>
+      <hr>
+      <li><b>BPG:</b> {{team.bpg}}</li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="col-lg-6 col-md-8 col-sm-6 text-left player-info">
+    
+    <b>Curretly playing for:</b> <span ng-show="isCurrentlyPlaying"><a ng-href="/team/{{team.teamId}}" class="orange">{{team.teamName}}</a></span><span ng-hide="isCurrentlyPlaying" class="red">This player is not playing in the current season</span><br>
+    <b>Bio:</b> {{player.bio}}
+  </div>
+
+
+  <div class="col-lg-2 col-xs-12 other-players-heading"><h3>Other Players</h3></div>
+  <div class="col-lg-2 col-xs-12 other-players">
+
+    <div class="col-lg-12 other-players-heading2">Other Players</div>
+
+    <div class="col-xs-12 col-sm-6 col-lg-12 no-padding">
+
+      <div class="col-lg-12 col-xs-6 col-sm-6" ng-show="randomPlayers[0]._id">
+        <a ng-href="/player/{{randomPlayers[0]._id}}">
+          <img class="player-image" ng-src="https://s3.amazonaws.com/nycba/{{randomPlayers[0].photoUrl}}" ng-show="randomPlayers[0].photoUrl">
+          <img class="player-image" src="./images/players/no_image.png" ng-hide="randomPlayers[0].photoUrl">
+          <strong>{{randomPlayers[0].name.first}} {{randomPlayers[0].name.last}}</strong>
+        </a>
+      </div>
+
+      <div class="col-lg-12 no-padding invisible-div large-page-visible"><hr></div>
+
+      <div class="col-lg-12 col-xs-6 col-sm-6" ng-show="randomPlayers[1]._id">
+        <a ng-href="/player/{{randomPlayers[1]._id}}">
+          <img class="player-image" ng-src="https://s3.amazonaws.com/nycba/{{randomPlayers[1].photoUrl}}" ng-show="randomPlayers[1].photoUrl">
+          <img class="player-image" src="./images/players/no_image.png" ng-hide="randomPlayers[1].photoUrl">
+          <strong>{{randomPlayers[1].name.first}} {{randomPlayers[1].name.last}}</strong>
+        </a>
+      </div>
+
+    </div>
+
+    <div class="col-lg-12 no-padding invisible-div large-page-visible"><hr></div>
+
+    <div class="col-xs-12 col-sm-6 col-lg-12 no-padding">
+
+      <div class="col-lg-12 col-xs-6 col-sm-6" ng-show="randomPlayers[2]._id">
+        <a ng-href="/player/{{randomPlayers[2]._id}}">
+          <img class="player-image" ng-src="https://s3.amazonaws.com/nycba/{{randomPlayers[2].photoUrl}}" ng-show="randomPlayers[2].photoUrl">
+          <img class="player-image" src="./images/players/no_image.png" ng-hide="randomPlayers[2].photoUrl">
+          <strong>{{randomPlayers[2].name.first}} {{randomPlayers[2].name.last}}</strong>
+        </a>
+      </div>
+
+      <div class="col-lg-12 no-padding invisible-div large-page-visible"><hr></div>
+
+      <div class="col-lg-12 col-xs-6 col-sm-6" ng-show="randomPlayers[3]._id">
+        <a ng-href="/player/{{randomPlayers[3]._id}}">
+          <img class="player-image" ng-src="https://s3.amazonaws.com/nycba/{{randomPlayers[3].photoUrl}}" ng-show="randomPlayers[3].photoUrl">
+          <img class="player-image" src="./images/players/no_image.png" ng-hide="randomPlayers[3].photoUrl">
+          <strong>{{randomPlayers[3].name.first}} {{randomPlayers[3].name.last}}</strong>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- <div class="col-lg-12 col-xs-6 col-sm-3">
+      <a ng-href="/player/{{randomPlayers[1]._id}}">
+        <img class="player-image" ng-src="https://s3.amazonaws.com/nycba/{{randomPlayers[1].photoUrl}}" ng-show="randomPlayers[1].photoUrl">
+        <img class="player-image" src="./images/players/no_image.png" ng-hide="randomPlayers[1].photoUrl">
+        {{randomPlayers[1].name.first}} {{randomPlayers[1].name.last}}
+      </a>
+    </div>
+
+    <div class="col-lg-12 col-xs-6 col-sm-3">
+      <a ng-href="/player/{{randomPlayers[2]._id}}">
+        <img class="player-image" ng-src="https://s3.amazonaws.com/nycba/{{randomPlayers[2].photoUrl}}" ng-show="randomPlayers[2].photoUrl">
+        <img class="player-image" src="./images/players/no_image.png" ng-hide="randomPlayers[2].photoUrl">
+        {{randomPlayers[2].name.last}} {{randomPlayers[2].name.first}}
+      </a>
+    </div>
+
+    <div class="col-lg-12 col-xs-6 col-sm-3">
+      <a ng-href="/player/{{randomPlayers[3]._id}}">
+        <img class="player-image" ng-src="https://s3.amazonaws.com/nycba/{{randomPlayers[3].photoUrl}}" ng-show="randomPlayers[3].photoUrl">
+        <img class="player-image" src="./images/players/no_image.png" ng-hide="randomPlayers[3].photoUrl">
+        {{randomPlayers[3].name.first}} {{randomPlayers[3].name.last}}
+      </a>
+    </div> -->
+
+  </div>
+
+</div>
+
+  
+  <!-- <div class="col-md-6 col-xs-12 pull-left">
+    <img ng-src="https://s3.amazonaws.com/nycba/{{player.photoUrl}}" ng-show="player.photoUrl" style="max-width: 230px; max-height: 185px;"><br>
+    <img src="./images/players/no_image.png" ng-hide="player.photoUrl"><br>
+  	<span ng-show="player.isCaptain">Captain</span>
+  </div>
+
+  <div class="col-md-4 col-xs-12 pull-left">
+  	<span class="player-name">
+      <span><b>Name: </b></span><span>{{player.name.first}} {{player.name.last}}</span>
+    </span><br>
+  	<b>Curretly playing for: </b><span ng-show="isCurrentlyPlaying"><a ng-href="/team/{{team.teamId}}">{{team.teamName}}</a></span><span ng-hide="isCurrentlyPlaying">This player is not playing in the current season</span><br>
+  	<span class="player-bio">
+      <span><b>Bio: </b></span>
+      <span>{{player.bio}}</span>
+    </span>
+  </div>
+
+  <div class="col-md-12" ng-show="isCurrentlyPlaying">
+  	<b>Statistics:</b><br>
+  	PPG: {{team.ppg}}<br>
+  	RPG: {{team.rpg}}<br>
+  	APG: {{team.apg}}<br>
+  	SPG: {{team.spg}}<br>
+  	BPG: {{team.bpg}}<br>
+  </div>
+</div> -->
+
+<!-- <div class="col-md-12 ng-scope" style="overflow:auto;  background-color: rgba(255,255,255,.75); border-radius: 50px; border: 2px solid #000; box-shadow: #333 3px 3px 3px; padding:20px;"><div class="col-md-12 ng-scope">
+
+  <div class="col-md-4 col-xs-12 pull-left">
+    <img class="player" src="https://s3.amazonaws.com/nycba/james_lebron.jpg" ng-src="https://s3.amazonaws.com/nycba/james_lebron.jpg" ng-show="player.photoUrl" style="width: 100%;"><br>
+    <br>
+    <b>Statistics:</b><br>
+    <ul class="list-unstyled" style="background-color: rgba(255,255,255,.9); padding:20px; margin-left:-2px; border-radius:20px; border:1px solid #333;">
+    <li style="margin-top:10px;"><b>PPG:</b> 27.5</li>
+    <hr>
+    <li style="margin-top:10px;"><b>RPG:</b> 8.5</li>
+    <hr>
+    <li style="margin-top:10px;"><b>APG:</b> 8</li>
+    <hr>
+    <li style="margin-top:10px;"><b>SPG:</b> 3</li>
+    <hr>
+    <li style="margin-top:10px;"><b>BPG:</b> 1</li>
+    </ul>
+    
+  </div>
+
+  <div class="col-md-6 col-xs-12 pull-left">
+    <span class="player-name">
+      <span><b>Name: </b></span><span class="ng-binding">LeBron James</span>
+    </span><br>
+    <b>Curretly playing for: </b><span class="" ng-show="isCurrentlyPlaying"><a href="/team/53a99ee782e3ae020003d449" class="ng-binding" ng-href="/team/53a99ee782e3ae020003d449"><strong>Miami Heat</strong></a></span><br><span class="ng-hide notplaying" ng-hide="isCurrentlyPlaying">This player is not playing in the current season</span><br>
+    <span class="player-bio">
+      <span><b>Bio: </b></span>
+      <span class="ng-binding">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+    </span>
+    <br>
+    
+  </div>
+
+  <div class="col-lg-2" style="background-color: rgba(0,0,0,.5); border-radius: 0px 20px 20px 0px; border-left:2px solid #000; color:#fff;">
+  Other Players:
+  <a href="#"><img src="https://s3.amazonaws.com/nycba/allen_ray.jpg">
+  <small>Player Name</small></a>
+  <hr>
+  <a href="#"><img src="https://s3.amazonaws.com/nycba/allen_ray.jpg">
+  <small>Player Name</small></a>
+  <hr>
+  <a href="#"><img src="https://s3.amazonaws.com/nycba/allen_ray.jpg">
+  <small>Player Name</small></a>
+  <hr>
+  <a href="#"><img src="https://s3.amazonaws.com/nycba/allen_ray.jpg">
+  <small>Player Name</small></a>
+  <hr>
+  
+  
+    </div>
+</div></div> -->

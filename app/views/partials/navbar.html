@@ -1,0 +1,128 @@
+<!-- <div class="header" ng-controller="NavbarCtrl">
+
+	 
+	<nav class="container-fluid no-padding">
+	  <div class="col-md-12 col-s-12 col-xs-12 no-padding"><a href="/"><img src="./images/nycba-logo.png" class="pull-left" style="height:100px;padding-bottom: 1em;"></a></div>
+		  <div class="col-md-12 col-s-12 col-xs-12 no-padding">
+		  <ul class="nav nav-pills">
+		    <li class="dropdown" ng-class="{active: isActive('/divisions')}">
+		    	<a href="/divisions">Divisions</a>
+		    	<ul class="dropdown-menu">
+		    		<li ng-repeat="division in divisions"><a ng-href="/division/{{division._id}}">{{division.name}}</a></li>
+		    	</ul>
+		    </li>
+		    <li ng-class="{active: isActive('/teams')}">
+		    	<a href="/teams">Teams</a>
+		    </li>
+		    <li ng-class="{active: isActive('/players')}">
+		    	<a href="/players">Players</a>
+		    </li>
+		    <li class="dropdown" ng-class="{active: isActive('/scores')}">
+		    	<a href="/scores">Scores &amp; Schedules</a>
+		    	<ul class="dropdown-menu" role="menu">
+		    		<li ng-repeat="division in divisions"><a ng-href="/score/{{division._id}}">{{division.name}}</a></li>
+		    	</ul>
+		    </li>
+		    <li class="dropdown" ng-class="{active: isActive('/statistics')}">
+		    	<a href="/statistics">Statistics</a>
+		    	<ul class="dropdown-menu" role="menu">
+		    		<li ng-repeat="division in divisions"><a ng-href="/statistic/{{division._id}}">{{division.name}}</a></li>
+		    	</ul>
+		    </li>
+		    <li class="dropdown" ng-class="{active: isActive('/standings')}">
+		    	<a href="/standings">Standings</a>
+		    	<ul class="dropdown-menu" role="menu">
+		    		<li ng-repeat="division in divisions"><a ng-href="/standing/{{division._id}}">{{division.name}}</a></li>
+		    	</ul>
+		    </li>
+		    <li ng-class="{active: isActive('/signup')}">
+		    	<a href="/signup">Team Sign Up</a>
+		    </li>
+		    <li class="dropdown" ng-class="{active: isActive('/more')}">
+		    	<a href="/more">More</a>
+		    	<ul class="dropdown-menu" role="menu">
+		    		<li><a ng-href="/signup">Team Registration</a></li>
+		    		<li><a ng-href="/more">Rules</a></li>
+		    		<li><a ng-href="/more">Statistics</a></li>
+		    		<li><a ng-href="/more">Photos</a></li>
+		    	</ul>
+		    </li>
+		  </ul>
+	  </div>
+	</nav> 
+</div> -->
+
+
+<nav class="navbar navbar-default navbar-dark" ng-controller="NavbarCtrl" role="navigation">
+  <div class="container wide no-padding">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+	      	<span class="sr-only">Toggle navigation</span>
+	      	<span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="/"><img class="logo" src="./images/nycba-logo.png" width="100"></a>
+	    </div>
+
+	    <div class="collapse navbar-collapse" id="navbar-collapse">
+	      <ul class="nav navbar-nav navbar-right">
+
+	      	<li class="dropdown" ng-class="{active: isActive('/divisions')}">
+		    	<a href="" class="dropdown-toggle" data-toggle="dropdown">Divisions <span class="caret"></span></a>
+		    	<ul class="dropdown-menu" role="menu">
+		    		<li ng-repeat="division in divisions | orderBy:'name' "><a ng-href="/division/{{division._id}}">{{division.name}}</a></li>
+		    	</ul>
+		    </li>
+		    <li ng-class="{active: isActive('/teams')}">
+		    	<a href="/teams">Teams</a>
+		    </li>
+		    <li ng-class="{active: isActive('/players')}">
+		    	<a href="/players">Players</a>
+		    </li>
+		    <li class="dropdown" ng-class="{active: isActive('/divisions')}">
+		    	<a href="" class="dropdown-toggle" data-toggle="dropdown">Scores &amp; Schedules <span class="caret"></span></a>
+		    	<ul class="dropdown-menu" role="menu">
+		    		<li ng-repeat="division in divisions | orderBy:'name' "><a ng-href="/score/{{division._id}}">{{division.name}}</a></li>
+		    	</ul>
+		    </li>
+		    <li class="dropdown" ng-class="{active: isActive('/divisions')}">
+		    	<a href="" class="dropdown-toggle" data-toggle="dropdown">Statistics <span class="caret"></span></a>
+		    	<ul class="dropdown-menu" role="menu">
+		    		<li ng-repeat="division in divisions | orderBy:'name' "><a ng-href="/statistic/{{division._id}}">{{division.name}}</a></li>
+		    	</ul>
+		    </li>
+		    <li class="dropdown" ng-class="{active: isActive('/divisions')}">
+		    	<a href="" class="dropdown-toggle" data-toggle="dropdown">Standings <span class="caret"></span></a>
+		    	<ul class="dropdown-menu" role="menu">
+		    		<li ng-repeat="division in divisions | orderBy:'name' "><a ng-href="/standing/{{division._id}}">{{division.name}}</a></li>
+		    	</ul>
+		    </li>
+		    <li ng-class="{active: isActive('/signup')}">
+		    	<a href="/signup">Team Sign Up</a>
+		    </li>
+		    <li class="dropdown" ng-class="{active: isActive('/divisions')}">
+		    	<a href="" class="dropdown-toggle" data-toggle="dropdown">More <span class="caret"></span></a>
+		    	<ul class="dropdown-menu" role="menu">
+		    		<li><a ng-href="/signup">Team Registration</a></li>
+		    		<li><a ng-href="/photos">Photos</a></li>
+		    	</ul>
+		    </li>
+		    <li>
+		    	<a href="https://www.facebook.com/nycba.league" target="_blank"><span class="fa fa-facebook"></span></a>
+		    </li>
+		    <li>
+		    	<a href="https://twitter.com/NYCBA_League" target="_blank"><span class="fa fa-twitter"></span></a>
+		    </li>
+		    <li>
+		    	<a href="http://instagram.com/nycba_league" target="_blank"><span class="fa fa-instagram"></span></a>
+		    </li>
+
+	      </ul>
+	    </div>
+	  </div>
+	</div>
+</nav>
+
+
